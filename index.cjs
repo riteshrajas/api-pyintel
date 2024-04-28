@@ -2,12 +2,13 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+
+
 
 const server = http.createServer((req, res) => {
   const reqUrl = url.parse(req.url, true);
   const route = reqUrl.pathname;
+
 
   if (route === '/') {
     fs.readFile(path.join(__dirname, 'index.html'), (err, data) => {
