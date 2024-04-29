@@ -1,7 +1,10 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
+const {WebSocketServer} = require("ws");
 const path = require('path');
+const api = require('./api.cjs');
+const iot = require('./iot.cjs');
 
 
 
@@ -20,9 +23,12 @@ const server = http.createServer((req, res) => {
         res.end(data);
       }
     });
-  } else if (route.startsWith('/api/')) {
+  } else if (route.startsWith('/api')) {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('API Interface');
+    res.end(api.processQuery(res, reqUrl.query));
+  } else if (route.startsWith('/iot')){
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res
   } else {
     // Try to serve static files
     const staticFilePath = path.join(__dirname, route);
@@ -37,9 +43,22 @@ const server = http.createServer((req, res) => {
     });
   }
 });
+const IotServer = new WebSocketServer({port: 1234});
 
 const port = 3000;
 const host = '127.0.0.1';
 server.listen(port, host, () => {
   console.log(`Server running at http://${host}:${port}/`);
+  console.log(`API running at http://${host}:${port}/api?text=hello`);
+  console.log(`IoT API running at http://${host}:${port}/iot`);
+});
+
+IotServer.on('connection', (socket) => {
+  socket.on('message', (data) => {
+    console.log('Received from IoT device: ' + data);
+  });
+});
+
+IoTServer.on('message', (data) => {
+  socket.send('Hello from server');
 });
