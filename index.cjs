@@ -1,7 +1,7 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-const {WebSocketServer} = require("ws");
+const { WebSocket, WebSocketServer } = require('ws');
 const path = require('path');
 const api = require('./api.cjs');
 const iot = require('./iot.cjs');
@@ -43,8 +43,6 @@ const server = http.createServer((req, res) => {
     });
   }
 });
-const IotServer = new WebSocketServer({port: 1234});
-
 const port = 3000;
 const host = '127.0.0.1';
 server.listen(port, host, () => {
@@ -53,12 +51,43 @@ server.listen(port, host, () => {
   console.log(`IoT API running at http://${host}:${port}/iot`);
 });
 
-IotServer.on('connection', (socket) => {
-  socket.on('message', (data) => {
+
+const IotServer = new WebSocketServer({port: 1234});
+
+
+
+let clients = new Set();
+
+
+IotServer.on('connection', (ws) => {
+  clients.add(ws);
+  console.log('New client connected');
+
+  ws.on('message', (data) => {
     console.log('Received from IoT device: ' + data);
+    // Broadcast to all clients
+    for (let client of clients) {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send('Hello from server');
+      }
+    }
+  });
+
+  ws.on('close', () => {
+    clients.delete(ws);
+    console.log('Client disconnected');
+  });
+
+  ws.on('error', (err) => {
+    console.error('Error occurred:', err);
   });
 });
 
-IoTServer.on('message', (data) => {
-  socket.send('Hello from server');
-});
+// Heartbeat
+setInterval(() => {
+  IotServer.clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.ping();
+    }
+  });
+}, 5000);
