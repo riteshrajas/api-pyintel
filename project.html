@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyApp Suite</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+    <nav class="navbar">
+        <div class="logo">MyApp Suite</div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#download">Download</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to MyApp Suite</h1>
+        <p>Unify your app experience across Android, Windows, and server applications with a seamless and intuitive interface.</p>
+        <a href="#download" class="cta-btn">Get Started</a>
+    </div>
+</section>
+<section id="features" class="features">
+    <h2>Features</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>Cross-Platform Compatibility</h3>
+            <p>Effortlessly switch between Android, Windows, and server applications.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Enhanced Performance</h3>
+            <p>Experience high-speed performance and smooth operation across all devices.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Modern Design</h3>
+            <p>Enjoy a sleek, user-friendly interface designed for ease of use and efficiency.</p>
+        </div>
+    </div>
+</section>
+<section id="download" class="download">
+    <h2>Download MyApp Suite</h2>
+    <p>Available for Android, Windows, and as a server application. Choose your platform below.</p>
+    <div class="download-buttons">
+        <a href="#" class="cta-btn">Download for Android</a>
+        <a href="#" class="cta-btn">Download for Windows</a>
+        <a href="#" class="cta-btn">Download Server</a>
+    </div>
+</section>
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="cta-btn">Send Message</button>
+    </form>
+</section>
+<footer class="footer">
+    <p>&copy; <span id="year"></span> MyApp Suite. All rights reserved.</p>
+</footer>
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: #f5f7fa;
+        color: #333;
+    }
+
+    .header {
+        background-color: #007acc;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.8em;
+        color: #fff;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+    }
+
+    .nav-links li {
+        margin-left: 20px;
+    }
+
+    .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #d1e6f3;
+    }
+
+    .hero {
+        background: url('assets/hero.png') no-repeat center center/cover;
+        color: #fff;
+        text-align: center;
+        padding: 120px 20px;
+    }
+
+    .hero-content {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .cta-btn {
+        background-color: #007acc;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        padding: 12px 25px;
+        font-size: 1.1em;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .cta-btn:hover {
+        background-color: #005a9e;
+        transform: translateY(-3px);
+    }
+
+    .features {
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .features h2 {
+        margin-bottom: 20px;
+        font-size: 2em;
+        color: #333;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        justify-items: center;
+    }
+
+    .feature-card {
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 350px;
+        text-align: left;
+        transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .download {
+        background-color: #007acc;
+        color: #fff;
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .download-buttons {
+        margin-top: 20px;
+    }
+
+    .download-buttons a {
+        background-color: #005a9e;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        padding: 12px 25px;
+        font-size: 1.1em;
+        text-decoration: none;
+        display: inline-block;
+        margin: 10px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .download-buttons a:hover {
+        background-color: #004080;
+        transform: translateY(-3px);
+    }
+
+    .contact {
+        background-color: #fff;
+        color: #333;
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .contact h2 {
+        margin-bottom: 20px;
+        font-size: 2em;
+    }
+
+    .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    .contact-form button {
+        background-color: #005a9e;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        padding: 12px 25px;
+        font-size: 1.1em;
+        transition: background-color 0.3s;
+    }
+
+    .contact-form button:hover {
+        background-color: #004080;
+    }
+
+    .footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+</html>

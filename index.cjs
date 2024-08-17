@@ -28,8 +28,19 @@ const server = http.createServer((req, res) => {
     res.end(api.processQuery(res, reqUrl.query));
   } else if (route.startsWith('/iot')){
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res
-  } else {
+  } else if (route.startsWith('/project')){
+    fs.readFile(path.join(__dirname, 'project.html'), (err, data) => {
+      if (err) {
+        res.writeHead(500, {'Content-Type': 'text/plain'});
+        res.end('Server error');
+      } else {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end(data);
+      }
+    }
+    );
+  }
+  else {
     // Try to serve static files
     const staticFilePath = path.join(__dirname, route);
     fs.readFile(staticFilePath, (err, data) => {
