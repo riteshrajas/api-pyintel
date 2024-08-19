@@ -38,6 +38,8 @@
   }
 }
 
+
+
 /* Hero Style */
 .cta-btn--hero {
   @include supportColorForIE11();
@@ -140,3 +142,137 @@
 // .fa-angle-up {
 //   color: #272727;
 // }
+
+.cta-btn--red {
+  display: inline-block;
+  position: relative;
+  padding: 0.8rem $default-font-size;
+  font-weight: bold;
+  line-height: 1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 3px;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.6s;
+  &:hover {
+    box-shadow: 1.5px 1.5px 3px rgba(174, 174, 192, 0.4), -1px -1px 3px #ffffff;
+    @include respond(phone) {
+      box-shadow: none;
+    }
+  }
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background-image: linear-gradient(
+                    135deg,
+                    rgb(255, 0, 0) 0%,
+                    rgb(255,0,0,) 100%
+    );
+    width: 0px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.6s;
+    @include respond(phone) {
+      width: 0;
+      height: 0;
+    }
+  }
+}
+
+/* Hero Style - Red Version */
+.cta-btn--hero-red {
+  @include supportColorForIE11();
+  border: 2px solid transparent;
+  border-image: linear-gradient(
+                  135deg,
+                  $primary-red 0%,
+                  $secondary-red 100%
+  );
+  border-image-slice: 1;
+  @include supportIE11() {
+    color: $secondary-red;
+    &:hover {
+      color: $white-color;
+    }
+  }
+
+  // Responsive Button hero style
+  @include respond(phone) {
+    background-image: none;
+    border: 2px solid $secondary-red;
+    box-shadow: none;
+    -webkit-text-fill-color: $secondary-red;
+  }
+
+  &::after {
+    height: 410%;
+    width: 150%;
+    transform: translate(-98%, -25%) rotate(45deg);
+  }
+
+  &:hover {
+    -webkit-text-fill-color: $white-color;
+    text-decoration: none;
+
+    // Responsive Button hover hero style
+    @include respond(phone) {
+      -webkit-text-fill-color: $secondary-red;
+    }
+
+    &::after {
+      transform: translate(-9%, -25%) rotate(45deg);
+    }
+  }
+}
+
+/* Resume Style - Red Version */
+.cta-btn--resume-red {
+  border-radius: 0;
+  color: $white-color;
+  border: 2px solid $white-color;
+
+  &::after {
+    background: $white-color;
+  }
+
+  &:hover {
+    color: $secondary-red;
+    text-decoration: none;
+    box-shadow: none;
+    @include respond(phone) {
+      color: $white-color;
+    }
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+/* Project Style - Red Version */
+.cta-btn--repo-red {
+  box-shadow: inset 1px 1px 1px 1px rgb(255, 255, 255),
+  inset -1px -1px 1px  1px rgba(255, 255, 255,100);
+  border: 2px solid transparent;
+  @include respond(phone) {
+    border: none;
+    box-shadow: 1.5px 1.5px 3px rgba(174, 174, 192, 0.19), -1px -1px 3px rgba(255, 255, 255, 0);
+  }
+  &::after {
+    height: 250%;
+    width: 130%;
+  }
+  &::after {
+    transform: translate(-98%, -30%) rotate(45deg);
+  }
+
+  &:hover {
+    box-shadow: 1.5px 1.5px 3px rgba(174, 174, 192, 0.4), -1px -1px 3px #ffffff;
+
+    &::after {
+      transform: translate(-12%, -30%) rotate(45deg);
+    }
+  }
+}
+

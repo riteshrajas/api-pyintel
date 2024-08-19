@@ -40,3 +40,14 @@ a:hover {
     box-shadow: none;
   }
 }
+.text-color-main-v2 {
+  margin-left: 1rem;
+  @include supportColorForIE11();
+
+  @include respond(phone) {
+    margin: 0;
+    background-image: none;
+    -webkit-text-fill-color: rgb(0, 0, 0);
+    box-shadow: none;
+  }
+}

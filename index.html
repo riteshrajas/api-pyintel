@@ -2,6 +2,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+
+        .horizontal-space {
+            margin-right: 10px; /* Adjust the value as needed */
+        }
+        .vertical-space {
+            margin-right: 10px; /* Adjust the value as needed */
+        }
+        /* Add this to your CSS file */
+        @media (max-width: 600px) {
+            .hero-cta {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-cta .cta-btn {
+                margin-bottom: 10px; /* Add space between buttons */
+                width: 100%; /* Make buttons full width */
+                text-align: center;
+            }
+
+            .hero-cta .cta-btn:last-child {
+                margin-bottom: 0; /* Remove margin from the last button */
+            }
+        }
+     .contact-wrapper {
+    background-color: #F9F9F900;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: flex-end; /* Align form to the right */
+}
+
+.contact-wrapper__text {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #333;
+    flex: 1; /* Take up remaining space */
+}
+
+#contact-form {
+    width: 100%; /* Adjust width as needed */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+.cta-btn--resume {
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-btn--resume:hover {
+    background-color: #0056b3;
+}
+    </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -84,14 +171,16 @@
 <body>
 <!-- Hero Section -->
 <div id="hero">
-    <section class="container">
+    <section class="container" >
         <h1 class="hero-title">
             Hi, my name is <span class="text-color-main name">Ritesh Raj</span>
             <br />
             I'm a <span class="text-color-main">Full-Stack Developer</span>
         </h1>
         <p class="hero-cta">
-            <a class="cta-btn cta-btn--hero" href="#about">Get in touch</a>
+            <a class="cta-btn cta-btn--hero horizontal-space" href="#about">My Journey So Far</a>
+            <a class="cta-btn cta-btn--hero horizontal-space" href="#projects">Open-source endeavor</a>
+            <a class="cta-btn cta-btn--hero horizontal-space" href="#contact">Shoot a Message</a>
         </p>
     </section>
     <a href="#about" class="scroll-down-link" aria-label="scroll-down">
@@ -287,15 +376,77 @@
 </section>
 <!-- End Projects Section -->
 
-<!-- Contact Section -->
-<section id="contact">
+<section id="repo">
     <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-wrapper">
-            <p class="contact-wrapper__text">[Put your call to action here]</p>
-            <a href="#" class="cta-btn cta-btn--resume">Call to Action</a>
+        <div class="repo-wrapper">
+            <h2 class="section-title dark-blue-text">Repositories</h2>
+
+            <article class="row">
+                <div class="repo-wrapper__text">
+                    <h3 class="repo-wrapper__text-title">Under Development</h3>
+                    <p class="repo-wrapper__text-info">
+                          </p>
+                    <div class="repo-wrapper__text-btns">
+                        <a
+                                href=""
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="cta-btn--red cta-btn--hero-red cta-btn--repo-red"
+                        >See Live</a
+                        >
+                        <a href="" target="_blank" class=" text-color-main-v2"
+                        >Source Code</a
+                        >
+                    </div>
+                </div>
+
+                <div class="repo-wrapper__image">
+                    <a href="https://programers-handbook.vercel.app" target="_blank" rel="noopener noreferrer">
+                        <div class="thumbnail rounded">
+                            <img
+                                    src="./assets/project.png"
+                                    class="img-fluid"
+                                    alt="repo Image"
+                                    width="1366"
+                                    height="767"
+                            />
+                        </div>
+                    </a>
+                </div>
+            </article>
+
+
+
+
         </div>
     </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+<div class="container" style="max-width: 600px">
+
+    <div class="contact-wrapper">
+        <form id="contact-form" action="/send-email" method="POST">
+            <h2 class="section-title">Contact</h2>
+            <div class="form-group">
+                <label for="name" class="contact-wrapper__text">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email" class="contact-wrapper__text">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message" class="contact-wrapper__text">Message</label>
+                <textarea id="message" name="message" required></textarea>
+                <div class="vertical-space"><br></div>
+                <a href="#" class="cta-btn cta-btn--resume">Call to Action</a>
+            </div>
+            <br>
+        </form>
+    </div>
+</div>
 </section>
 <!-- END Contact Section -->
 
@@ -360,6 +511,7 @@
 </script>
 <script src="javascript/vanilla-tilt.min.js"></script>
 <script type="text/javascript" src="./javascript/valtilt.js"></script>
+
 </body>
 
 </html>
