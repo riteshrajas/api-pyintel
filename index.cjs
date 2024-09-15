@@ -35,7 +35,7 @@ const server = http.createServer((req, res) => {
     });
   }
   else if (route === '/ScoutOps') {
-    fs.readFile(path.join(__dirname, 'scoutOps.html'), (err, data) => {
+    fs.readFile(path.join(__dirname, 'ScoutOps.html'), (err, data) => {
       if (err) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end('Server error');
