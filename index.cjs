@@ -2,7 +2,7 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
-
+const port = process.env.PORT || 4000;
 
 
 
@@ -60,7 +60,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-const port = 3000;
 const host = 'localhost';
 server.listen(port, host, () => {
   console.log(`Server running at http://${host}:${port}/`);
