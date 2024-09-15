@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/api-pyintel.iml" filepath="$PROJECT_DIR$/.idea/api-pyintel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../CSCLUB/attendance/.idea/attendance.iml" filepath="$PROJECT_DIR$/../../CSCLUB/attendance/.idea/attendance.iml" />
     </modules>
   </component>
 </project>
